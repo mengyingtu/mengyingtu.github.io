@@ -14,9 +14,6 @@
     <!-- Don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- production version -->
-    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
-
     <script type="text/babel">
       class Person extends React.Component {
         render() {
@@ -28,23 +25,16 @@
             <ul>
               <li>姓名: {name}</li>
               <li>性別: {sex}</li>
-              <li>年齡: {age+1}</li>
+              <li>年齡: {age}</li>
             </ul>
           );
         }
       }
-
-      Person.propTypes = {
-        name: PropTypes.string.
-      }
-
-      let p1 = {name: 18, sex: '女', age: 18}
       let nodes_1 = document.getElementById('Container1');
-      ReactDOM.createRoot(nodes_1).render(<Person {...p1}/>);
+      ReactDOM.createRoot(nodes_1).render(<Person name="Tom" sex="女" age="18"/>);
 
-      let p2 = {name: 'Jack', sex: '男', age: 17}
       let nodes_2 = document.getElementById('Container2');
-      ReactDOM.createRoot(nodes_2).render(<Person {...p2}/>);
+      ReactDOM.createRoot(nodes_2).render(<Person name="Jack" sex="男" age="17"/>);
     </script>
   </body>
 </html>
