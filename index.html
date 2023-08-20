@@ -19,10 +19,23 @@
 
     <script type="text/babel">
       class Person extends React.Component {
+        static propTypes = {
+          name: PropTypes.string.isRequired,
+          sex: PropTypes.string,
+          age: PropTypes.number,
+          speak: PropTypes.func,
+        }
+
+        static defaultProps = {
+          sex: '無',
+          age: 0,
+        }
+
         render() {
           console.log(this);
 
           let {name, sex, age} = this.props;
+          // this.props.name = 'XXXX'; // error: only read
 
           return (
             <ul>
@@ -34,17 +47,29 @@
         }
       }
 
-      Person.propTypes = {
-        name: PropTypes.string.
+      /* Person.propTypes = {
+        name: PropTypes.string.isRequired,
+        sex: PropTypes.string,
+        age: PropTypes.number,
+        speak: PropTypes.func,
       }
 
-      let p1 = {name: 18, sex: '女', age: 18}
+      Person.defaultProps = {
+        sex: '無',
+        age: 0,
+      } */
+
+      let p1 = {name: 'Tom', speak: speak}
       let nodes_1 = document.getElementById('Container1');
       ReactDOM.createRoot(nodes_1).render(<Person {...p1}/>);
 
       let p2 = {name: 'Jack', sex: '男', age: 17}
       let nodes_2 = document.getElementById('Container2');
       ReactDOM.createRoot(nodes_2).render(<Person {...p2}/>);
+
+      function speak() {
+        console.log('speak func');
+      }
     </script>
   </body>
 </html>
