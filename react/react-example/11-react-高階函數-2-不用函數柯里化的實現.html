@@ -48,20 +48,7 @@
             });
           }
         }
-
-        saveFormData2 = (event)=>{
-          // console.log(dataType);
-
-          if (event.target.name) {
-            console.log(event.target.name, event.target.value);
-
-            this.setState({
-              [event.target.name]: event.target.value,
-            });
-          }
-        }
         
-
         handleSubmit = (event)=>{
           event.preventDefault(); // 阻止表單提交
           let {username, password} = this.state;
@@ -72,7 +59,7 @@
           return (
             <form onSubmit={this.handleSubmit}>
               帳號: <input onChange={this.saveFormData('username')} type="text" name="username"/>
-              密碼: <input onChange={this.saveFormData2} type="password" name="password"/>
+              密碼: <input onChange={this.saveFormData('password')} type="password" name="password"/>
               <button>登入</button>
             </form>
           )

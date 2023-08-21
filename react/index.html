@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>不用函數柯里化的實現</title>
+  </head>
+  <body>
+    <div id="Container"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- production version -->
+    <script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+
+    <script type="text/babel">
+      //#region
+      /* 
+        高階函數: 如果一個函數符合下面2個規範中的任何一個，那該函數就是高階函數
+          1. 若A函數，接收的參數是一個函數，那麼A就可以稱之為高階函數。
+          2. 若A函數，調用的返回值依然是一個函數，那麼A就可以稱之為高階函數。
+
+        函數的柯里化: 通過函數調用繼續返回函數的方式，實現多次接收參數最後統一處理的函數編碼形式。
+      */
+      //#endregion
+      // 創建組件
+      class Login extends React.Component{
+
+        // 初始化狀態
+        state = {
+          username: '', // 帳號
+          password: '', // 密碼
+        }
+
+        // 保存保單數據在狀態中
+        saveFormData = (dataType)=>{
+          // console.log(dataType);
+
+          return (event)=>{
+            console.log(dataType, event.target.value);
+
+            this.setState({
+              [dataType]: event.target.value,
+            });
+          }
+        }
+
+        saveFormData2 = (event)=>{
+          // console.log(dataType);
+
+          if (event.target.name) {
+            console.log(event.target.name, event.target.value);
+
+            this.setState({
+              [event.target.name]: event.target.value,
+            });
+          }
+        }
+        
+
+        handleSubmit = (event)=>{
+          event.preventDefault(); // 阻止表單提交
+          let {username, password} = this.state;
+          alert(`輸入的帳號是: ${username}，輸入的密碼是: ${password}`);
+        }
+
+        render() {
+          return (
+            <form onSubmit={this.handleSubmit}>
+              帳號: <input onChange={this.saveFormData('username')} type="text" name="username"/>
+              密碼: <input onChange={this.saveFormData2} type="password" name="password"/>
+              <button>登入</button>
+            </form>
+          )
+        }
+      }
+      // 渲染組件
+      let nodes_root = document.getElementById('Container');
+      ReactDOM.createRoot(nodes_root).render(<Login/>);
+    </script>
+  </body>
+</html>
