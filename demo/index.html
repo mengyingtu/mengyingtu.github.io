@@ -35,7 +35,15 @@
       // let getProfile = liff.getProfile();
 
 
-      liff.getProfile()
+      if (liff.isLoggedIn()) {
+        console.log(liff.getProfile());
+        alert(liff.getProfile().displayName);
+      } else {
+        liff.login();
+      }
+
+
+      /*liff.getProfile()
       .then((profile) => {
         const name = profile.displayName;
         alert(name);
@@ -45,8 +53,7 @@
         console.log("error", err);
       });
 
-
-      sadsadsa(getProfile);
+      sadsadsa(getProfile);*/
 
 
       
