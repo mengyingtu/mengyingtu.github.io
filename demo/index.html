@@ -19,18 +19,10 @@
 </style>
   <div id="map" style="width: 100%;"></div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
   <!-- Make sure you put this AFTER Leaflet's CSS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
    
   <script>
-
-    (function($){
-      $(document).ready(function(){
-        $('#map').height(window.innerHeight);
-      });
-    })($);
 
     var myMap = L.map('map', {
       center: [22.73444963475145, 120.28458595275877],
