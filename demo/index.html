@@ -38,8 +38,14 @@
       if (liff.isLoggedIn()) {
         // console.log(liff.getProfile());
 
-        let getProfile = liff.getProfile();
-        alert(getProfile.displayName);
+        liff.getProfile()
+        .then(profile => {
+          const name = profile.displayName
+        })
+        .catch((err) => {
+          console.log('error', err);
+        });
+        alert(name);
       } else {
         liff.login();
       }
