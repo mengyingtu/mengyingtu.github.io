@@ -32,13 +32,14 @@
       console.log('LIFF init');
       
       // 這邊開始寫使用其他功能
-      let getProfile = liff.getProfile();
+      // let getProfile = liff.getProfile();
 
-      alert(getProfile.displayName);
 
       liff.getProfile()
       .then((profile) => {
         const name = profile.displayName;
+        alert(name);
+
       })
       .catch((err) => {
         console.log("error", err);
