@@ -41,13 +41,14 @@
         liff.getProfile()
         .then(profile => {
           const name = profile.displayName;
+          alert(name);
 
           sadsadsa(name);
         })
         .catch((err) => {
           console.log('error', err);
         });
-        alert(name);
+        
       } else {
         liff.login();
       }
