@@ -36,8 +36,10 @@
 
 
       if (liff.isLoggedIn()) {
-        console.log(liff.getProfile());
-        alert(liff.getProfile().displayName);
+        // console.log(liff.getProfile());
+
+        let getProfile = liff.getProfile();
+        alert(getProfile.displayName);
       } else {
         liff.login();
       }
