@@ -63,7 +63,12 @@
         
         // 這邊開始寫使用其他功能
 
-        if (liff.isLoggedIn()) {
+        let getProfile = liff.getProfile();
+          const name = getProfile.displayName;
+          const pic = getProfile.pictureUrl;
+          console.log(pic);
+
+        /* if (liff.isLoggedIn()) {
           let getProfile = liff.getProfile();
           const name = getProfile.displayName;
           const pic = getProfile.pictureUrl;
@@ -82,7 +87,7 @@
           console.log(pic);
 
           document.getElementById("imageid").src = pic;
-        } 
+        }  */
         
       }).catch(function(error) {
         console.log(error);
