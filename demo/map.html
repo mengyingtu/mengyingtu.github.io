@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <style>
+    #map { height: 100%; }body {
+        padding: 0;
+        margin: 0;
+    }
+    html, body, #map {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+  <div id="map" style="width: 100%;"></div>
+
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+   
+  <script>
+    // Line
+    var liffID = '2000496727-lPqOYrr5';
+    liff.init({
+      liffId: liffID
+    }).then(function() {
+      console.log('LIFF init');
+      
+      // 這邊開始寫使用其他功能
+
+      let getProfile = liff.getProfile();
+      const name = getProfile.displayName;
+      const pic = getProfile.pictureUrl;
+      // alert(name);
+
+      leaf(name, pic);
+
+
+      /* if (liff.isLoggedIn()) {
+        // console.log(liff.getProfile());
+
+        liff.getProfile()
+        .then(profile => {
+          const name = profile.displayName;
+          const pic = profile.pictureUrl;
+          // alert(name);
+
+          leaf(name, pic);
+        })
+        .catch((err) => {
+          console.log('error', err);
+        });
+        
+      } else {
+        liff.login();
+      } */
+    }).catch(function(error) {
+      console.log(error);
+    });
+
+
+    function leaf(line_displayName, pic) {
+      // let line_displayName = getProfile['displayName'];
+
+      let img = '<img src="' + pic + '" width="50px" height="50px">';
+
+      // leaf
+      let map = L.map('map').setView([23.00050745987354, 120.2197939584595], 14);
+
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 20,
+          attribution: '© OpenStreetMap'
+      }).addTo(map);
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position.coords.latitude, position.coords.longitude);
+
+        let geolocation_latitude = position.coords.latitude;
+        let geolocation_longitude = position.coords.longitude;
+        let marker = L.marker([geolocation_latitude, geolocation_longitude]).addTo(map);
+        marker.bindPopup(line_displayName + img);
+
+        let popup = L.popup();
+        function onMapClick(e) {
+          popup
+            .setLatLng(e.latlng)
+            .setContent('You clicked the map at ' + e.latlng.toString())
+            .openOn(map);
+        }
+        map.on('click', onMapClick);
+      });
+    }
+  </script>
+</body>
+</html>
