@@ -69,6 +69,9 @@
           liff.getProfile()
           .then(profile => {
             const name = profile.displayName;
+            const pic = profile.pictureUrl;
+
+            document.getElementById("imageid").src = pic;
             alert(name);
           })
           .catch((err) => {
