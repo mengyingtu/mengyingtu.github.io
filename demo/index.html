@@ -58,6 +58,11 @@
       .then(() => {
         // Start to use liff's api
         console.log('LIFF init');
+
+        let getProfile = liff.getProfile();
+        const name = getProfile.displayName;
+        const pic = getProfile.pictureUrl;
+        console.log(pic);
       })
       .catch((err) => {
         // Error happens during initialization
