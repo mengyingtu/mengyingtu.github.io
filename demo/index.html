@@ -49,7 +49,20 @@
 
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
-    line_liff();
+
+    liff.init({ liffId: '2000496727-lPqOYrr5' })
+  .then(async () => {
+    if (liff.isLoggedIn()) {
+      console.log(liff.getProfile());
+    } else {
+      liff.login();
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+    // line_liff();
     function line_liff() {
       let liffID = '2000496727-lPqOYrr5';
 
@@ -61,9 +74,19 @@
         // 這邊開始寫使用其他功能
 
         let getProfile = liff.getProfile();
-          const name = getProfile.displayName;
-          const pic = getProfile.pictureUrl;
-          console.log(pic);
+        const name = getProfile.displayName;
+        const pic = getProfile.pictureUrl;
+        console.log(pic);
+
+
+          // 登入
+          /*liff.login({
+            // 使用者登入後要去到哪個頁面
+            redirectUri: 'https://mengyingtu.github.io/demo/'
+          });
+
+          // 登出
+          liff.logout();*/
 
         /* if (liff.isLoggedIn()) {
           let getProfile = liff.getProfile();
