@@ -17,13 +17,13 @@
         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
       </ul>
-      <ul class="nav">
+      <!-- <ul class="nav">
         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Login</a></li>
         <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sign up</a></li>
-      </ul>
-      <div class="flex-shrink-0 dropdown">
+      </ul> -->
+      <div class="flex-shrink-0 dropdown mt-1">
         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          <img src="avatar.png" alt="mdo" width="28" height="28" class="rounded-circle" id="imageid">
         </a>
         <ul class="dropdown-menu text-small shadow">
           <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -63,10 +63,14 @@
         
         // 這邊開始寫使用其他功能
 
-        let getProfile = liff.getProfile();
-        const name = getProfile.displayName;
-        const pic = getProfile.pictureUrl;
-        // alert(name);
+        if (liff.isLoggedIn()) {
+          let getProfile = liff.getProfile();
+          const name = getProfile.displayName;
+          const pic = getProfile.pictureUrl;
+
+          document.getElementById("imageid").src = pic;
+        }
+        
       }).catch(function(error) {
         console.log(error);
       });
