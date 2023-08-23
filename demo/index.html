@@ -70,6 +70,15 @@
 
           document.getElementById("imageid").src = pic;
         }
+        else {
+          liff.login();
+
+          let getProfile = liff.getProfile();
+          const name = getProfile.displayName;
+          const pic = getProfile.pictureUrl;
+
+          document.getElementById("imageid").src = pic;
+        } 
         
       }).catch(function(error) {
         console.log(error);
