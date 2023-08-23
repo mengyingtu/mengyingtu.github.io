@@ -69,6 +69,8 @@
           const pic = getProfile.pictureUrl;
 
           document.getElementById("imageid").src = pic;
+
+          console.log(pic);
         }
         else {
           liff.login();
@@ -76,6 +78,8 @@
           let getProfile = liff.getProfile();
           const name = getProfile.displayName;
           const pic = getProfile.pictureUrl;
+
+          console.log(pic);
 
           document.getElementById("imageid").src = pic;
         } 
