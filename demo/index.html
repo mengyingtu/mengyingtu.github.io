@@ -59,14 +59,21 @@
         
         // 這邊開始寫使用其他功能
 
-        let getProfile = liff.getProfile();
-        const name = getProfile.displayName;
-        const pic = getProfile.pictureUrl;
 
-        alert(name);
-        console.log(pic);
+        if (liff.isLoggedIn()) {
+          let getProfile = liff.getProfile();
+          const name = getProfile.displayName;
+          const pic = getProfile.pictureUrl;
 
+          alert(name);
 
+          console.log(name);
+        }
+        else {
+          liff.login();
+        } 
+
+        
       }).catch(function(error) {
         console.log(error);
       });
