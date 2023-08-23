@@ -53,7 +53,11 @@
     liff.init({ liffId: '2000496727-lPqOYrr5' })
   .then(async () => {
     if (liff.isLoggedIn()) {
-      console.log(liff.getProfile());
+      let getProfile = liff.getProfile();
+        const name = getProfile.displayName;
+        const pic = getProfile.pictureUrl;
+
+      console.log(name);
     } else {
       liff.login();
     }
