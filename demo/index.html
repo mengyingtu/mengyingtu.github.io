@@ -44,112 +44,50 @@
     </div>
   </header>
 
-  <div id="xxxxxxxxx"></div>
-
+  <!-- Boostrap -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
 
+  <!-- Liff -->
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
+    let liffID = '2000508862-JGyAaveN';
 
-      let liffID = '2000508862-JGyAaveN';
+    liff.init({
+      liffId: liffID
+    }).then(function() {
+      console.log('LIFF init');
+      
+      // 這邊開始寫使用其他功能
 
-      liff.init({
-        liffId: liffID
-      }).then(function() {
-        console.log('LIFF init');
-        
-        // 這邊開始寫使用其他功能
+      if (!liff.isLoggedIn()) {
+        // alert("用戶未登入");
+        liff.login();
+      } else {
+        // alert("用戶已登入");
+        liff.getProfile()
+        .then(profile => {
+          let liff_displayName = profile.displayName;
+          let liff_pictureUrl = profile.pictureUrl;
 
-        if (!liff.isLoggedIn()) {
-          // alert("用戶未登入");
-          liff.login();
-        } else {
-          // alert("用戶已登入");
-          liff.getProfile()
-          .then(profile => {
-            let liff_displayName = profile.displayName;
-            let liff_pictureUrl = profile.pictureUrl;
+          let nodes_avatar = document.getElementById("ImgAvatar");
+          nodes_avatar.src = liff_pictureUrl;
 
-            let nodes_avatar = document.getElementById("ImgAvatar");
-            nodes_avatar.src = liff_pictureUrl;
-
-            let nodes_logout = document.getElementById('Logout');
-            nodes_logout.addEventListener('click', function(){
-              liff.logout();
-              history.go(0);
-            });
-          })
-          .catch((err) => {
-            console.log('error', err);
+          let nodes_logout = document.getElementById('Logout');
+          nodes_logout.addEventListener('click', function(){
+            liff.logout();
+            history.go(0);
           });
-        }
+        })
+        .catch((err) => {
+          console.log('error', err);
+        });
+      }
 
-        
-      }).catch(function(error) {
-        console.log(error);
-      });
-
-
-
-
-
-
-
-
-
-
-    // line_liff();
-    function line_liff() {
-      let liffID = '2000508862-JGyAaveN';
-
-      liff.init({
-        liffId: liffID
-      }).then(function() {
-        console.log('LIFF init');
-        
-        // 這邊開始寫使用其他功能
-
-        let getProfile = liff.getProfile();
-        const name = getProfile.displayName;
-        const pic = getProfile.pictureUrl;
-        console.log(pic);
-
-
-          // 登入
-          /*liff.login({
-            // 使用者登入後要去到哪個頁面
-            redirectUri: 'https://mengyingtu.github.io/demo/'
-          });
-
-          // 登出
-          liff.logout();*/
-
-        /* if (liff.isLoggedIn()) {
-          let getProfile = liff.getProfile();
-          const name = getProfile.displayName;
-          const pic = getProfile.pictureUrl;
-
-          document.getElementById("imageid").src = pic;
-
-          console.log(pic);
-        }
-        else {
-          liff.login();
-
-          let getProfile = liff.getProfile();
-          const name = getProfile.displayName;
-          const pic = getProfile.pictureUrl;
-
-          console.log(pic);
-
-          document.getElementById("imageid").src = pic;
-        }  */
-        
-      }).catch(function(error) {
-        console.log(error);
-      });
-    }
+      
+    }).catch(function(error) {
+      console.log(error);
+    });
   </script>
 </body>
 </html>
