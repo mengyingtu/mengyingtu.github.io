@@ -137,93 +137,99 @@
       <!-- Char -->
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-      <div class="card text-bg-light mb-3 col-6">
-        <div class="card-header">Pie</div>
-        <div class="card-body">
-          <canvas id="CharPie"></canvas>
+      <!-- Char 1 -->
+      <div class="col-6">
+        <div class="card text-bg-light mb-3">
+          <div class="card-header">Pie</div>
+          <div class="card-body">
+            <canvas id="CharPie"></canvas>
+          </div>
         </div>
-      </div>
-      <script>
-        let CharPie = document.getElementById('CharPie');
-        const data = {
-          labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-          datasets: [
-            {
-              label: 'Dataset 1',
-              data: [300, 50, 100, 70, 130],
-              backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(150, 12, 35)',
-                'rgb(60, 62, 23)',
-                'rgb(255, 205, 86)'
-              ],
+        <script>
+          let CharPie = document.getElementById('CharPie');
+          const data = {
+            labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+            datasets: [
+              {
+                label: 'Dataset 1',
+                data: [300, 50, 100, 70, 130],
+                backgroundColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(150, 12, 35)',
+                  'rgb(60, 62, 23)',
+                  'rgb(255, 205, 86)'
+                ],
 
-            }
-          ]
-        };
-        const config = {
-          type: 'pie',
-          data: data,
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'top',
-              },
-              title: {
-                display: true,
-                text: 'Chart.js Pie Chart'
               }
-            }
-          },
-        };
-        const myChart = new Chart(CharPie, config);
-      </script>
+            ]
+          };
+          const config = {
+            type: 'pie',
+            data: data,
+            options: {
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top',
+                },
+                title: {
+                  display: true,
+                  text: 'Chart.js Pie Chart'
+                }
+              }
+            },
+          };
+          const myChart = new Chart(CharPie, config);
+        </script>
+      </div>
 
-      <div class="card text-bg-light mb-3 col-6">
-        <div class="card-header">Pie</div>
-        <div class="card-body">
-          <canvas id="CharPie"></canvas>
+      <!-- Char 2 -->
+      <div class="col-6">
+        <div class="card text-bg-light mb-3 col-6">
+          <div class="card-header">Pie</div>
+          <div class="card-body">
+            <canvas id="CharPie"></canvas>
+          </div>
         </div>
-      </div>
-      <script>
-        let CharPiec = document.getElementById('CharPie');
-        const dataz = {
-          labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-          datasets: [
-            {
-              label: 'Dataset 1',
-              data: [300, 50, 100, 70, 130],
-              backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(150, 12, 35)',
-                'rgb(60, 62, 23)',
-                'rgb(255, 205, 86)'
-              ],
+        <script>
+          let CharPiec = document.getElementById('CharPie');
+          const dataz = {
+            labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+            datasets: [
+              {
+                label: 'Dataset 1',
+                data: [300, 50, 100, 70, 130],
+                backgroundColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(150, 12, 35)',
+                  'rgb(60, 62, 23)',
+                  'rgb(255, 205, 86)'
+                ],
 
-            }
-          ]
-        };
-        const configx = {
-          type: 'pie',
-          data: dataz,
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'top',
-              },
-              title: {
-                display: true,
-                text: 'Chart.js Pie Chart'
               }
-            }
-          },
-        };
-        new Chart(CharPiec, configx);
-      </script>
+            ]
+          };
+          const configx = {
+            type: 'pie',
+            data: dataz,
+            options: {
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top',
+                },
+                title: {
+                  display: true,
+                  text: 'Chart.js Pie Chart'
+                }
+              }
+            },
+          };
+          new Chart(CharPiec, configx);
+        </script>
+      </div>
     </div>
 
     
