@@ -145,15 +145,12 @@
     </div>
     <script>
       let CharPie = document.getElementById('CharPie');
-      const DATA_COUNT = 5;
-      const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
-
       const data = {
         labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
         datasets: [
           {
             label: 'Dataset 1',
-            data: Utils.numbers(NUMBER_CFG),
+            data: [300, 50, 100, 70, 130],
             backgroundColor: [
               'rgb(255, 99, 132)',
               'rgb(54, 162, 235)',
