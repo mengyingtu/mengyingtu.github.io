@@ -24,50 +24,52 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
    
   <script>
-    // Line
-    var liffID = '2000508862-JGyAaveN';
+    let liffID = '2000508862-JGyAaveN';
+
     liff.init({
       liffId: liffID
     }).then(function() {
-      console.log('LIFF init');
+      // console.log('LIFF init');
       
-      // 這邊開始寫使用其他功能
-
-      let getProfile = liff.getProfile();
-      const name = getProfile.displayName;
-      const pic = getProfile.pictureUrl;
-      alert(name);
-
-      // leaf(name, pic);
-
-
-      /* if (liff.isLoggedIn()) {
-        // console.log(liff.getProfile());
-
+      if (!liff.isLoggedIn()) {
+        // alert("用戶未登入");
+        liff.login();
+      } else {
+        // alert("用戶已登入");
         liff.getProfile()
         .then(profile => {
-          const name = profile.displayName;
-          const pic = profile.pictureUrl;
-          // alert(name);
+          let liff_displayName = profile.displayName;
+          let liff_pictureUrl = profile.pictureUrl;
+          
+          /* let nodes_displayName = document.getElementById("LiffDisplayName");
+          nodes_displayName.textContent = liff_displayName;
 
-          leaf(name, pic);
+          let nodes_pictureUrl = document.getElementById("LiffPictureUrl");
+          nodes_pictureUrl.src = liff_pictureUrl;
+
+          let nodes_logout = document.getElementById('Logout');
+          nodes_logout.addEventListener('click', function(){
+            liff.logout();
+            history.go(0);
+          }); */
+
+          leaf(liff_displayName, liff_pictureUrl)
         })
         .catch((err) => {
           console.log('error', err);
         });
-        
-      } else {
-        liff.login();
-      } */
+      }
+
+      
     }).catch(function(error) {
       console.log(error);
     });
 
 
-    function leaf(line_displayName, pic) {
+    function leaf(liff_displayName, liff_pictureUrl) {
       // let line_displayName = getProfile['displayName'];
 
-      let img = '<img src="' + pic + '" width="50px" height="50px">';
+      let img = '<img src="' + liff_pictureUrl + '" width="50px" height="50px">';
 
       // leaf
       let map = L.map('map').setView([23.00050745987354, 120.2197939584595], 14);
@@ -83,7 +85,7 @@
         let geolocation_latitude = position.coords.latitude;
         let geolocation_longitude = position.coords.longitude;
         let marker = L.marker([geolocation_latitude, geolocation_longitude]).addTo(map);
-        marker.bindPopup(line_displayName + img);
+        marker.bindPopup(liff_displayName + img);
 
         let popup = L.popup();
         function onMapClick(e) {
