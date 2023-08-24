@@ -20,13 +20,14 @@
       </ul> -->
       <div class="flex-shrink-0 dropdown mt-1">
         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="avatar.png" alt="mdo" width="28" height="28" class="rounded-circle" id="ImgAvatar">
+          <img src="avatar.png" alt="mdo" width="28" height="28" class="rounded-circle" id="LiffUserPicture">
         </a>
         <ul class="dropdown-menu text-small shadow">
           <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><hr class="dropdown-divider"></li> -->
+          <li><a class="dropdown-item" href="#">Profile</a></li> -->
+          <li>歡迎 <span id="LiffDisplayName"></span></li>
+          <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="#" id="Logout">Sign out</a></li>
         </ul>
       </div>
@@ -56,10 +57,8 @@
     liff.init({
       liffId: liffID
     }).then(function() {
-      console.log('LIFF init');
+      // console.log('LIFF init');
       
-      // 這邊開始寫使用其他功能
-
       if (!liff.isLoggedIn()) {
         // alert("用戶未登入");
         liff.login();
@@ -69,9 +68,12 @@
         .then(profile => {
           let liff_displayName = profile.displayName;
           let liff_pictureUrl = profile.pictureUrl;
+          
+          let nodes_displayName = document.getElementById("LiffDisplayName");
+          nodes_displayName.textContent = liff_displayName;
 
-          let nodes_avatar = document.getElementById("ImgAvatar");
-          nodes_avatar.src = liff_pictureUrl;
+          let nodes_pictureUrl = document.getElementById("LiffPictureUrl");
+          nodes_pictureUrl.src = liff_pictureUrl;
 
           let nodes_logout = document.getElementById('Logout');
           nodes_logout.addEventListener('click', function(){
