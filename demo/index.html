@@ -134,53 +134,72 @@
       </div>
     </div>
 
-    <div class="card text-bg-light mb-3">
-      <div class="card-header">Header</div>
-      <div class="card-body">
-        <h5 class="card-title">Light card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
+    <!-- Char -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <div class="card text-bg-light mb-3">
       <div class="card-header">Header</div>
       <div class="card-body">
-        <div class="container-fluid">
-          <canvas id="myChart"></canvas>
-        </div>
+        <canvas id="CharPie"></canvas>
       </div>
     </div>
-  </div>
+    <script>
+      let CharPie = document.getElementById('CharPie');
+      new Chart(CharPie, {
+        type: 'pie',
+        data: {
+          labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+          datasets: [
+            {
+              label: 'Dataset 1',
+              data: Utils.numbers(NUMBER_CFG),
+              backgroundColor: Object.values(Utils.CHART_COLORS),
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Pie Chart'
+            }
+          }
+        },
+      });
+    </script>
 
-  
-
-  
-
-  <!-- Char -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <script>
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
+    <div class="card text-bg-light mb-3">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+    <script>
+      let ctx = document.getElementById('myChart');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
           }
         }
-      }
-    });
-  </script>
+      });
+    </script>
+  </div>
 
   <!-- Boostrap -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
