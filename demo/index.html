@@ -62,10 +62,10 @@
         // 這邊開始寫使用其他功能
 
         if (!liff.isLoggedIn()) {
-          alert("用戶未登入");
+          // alert("用戶未登入");
           liff.login();
         } else {
-          alert("用戶已登入");
+          // alert("用戶已登入");
           liff.getProfile()
           .then(profile => {
             let liff_displayName = profile.displayName;
