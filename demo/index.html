@@ -76,8 +76,8 @@
             let nodes_logout = document.getElementById('Logout');
             nodes_logout.addEventListener('click', function(){
               liff.logout();
+              history.go(0);
             });
-            alert(name);
           })
           .catch((err) => {
             console.log('error', err);
