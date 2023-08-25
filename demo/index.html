@@ -189,6 +189,55 @@
       <!-- Char 2 -->
       <div class="col-xl-6 col-md-6 col-12">
         <div class="card text-bg-light mb-3">
+          <div class="card-header">Line Chart Boundaries</div>
+          <div class="card-body">
+            <canvas id="CharLineBoundaries"></canvas>
+          </div>
+        </div>
+        <script>
+          let CharLineBoundaries = document.getElementById('CharLineBoundaries');
+          const data_CharLineBoundaries = {
+            labels: 8,
+            datasets: [
+              {
+                label: 'Dataset',
+                data: {
+                  min: -100,
+                  max: 100,
+                  count: 8,
+                  decimals: 2,
+                  continuity: 1
+                },
+                borderColor: 'rgb(60, 62, 23)',
+                backgroundColor: 'rgb(255, 99, 132)',
+                fill: false
+              }
+            ]
+          };
+          const config_CharLineBoundaries = {
+            
+            type: 'line',
+            data: data_CharLineBoundaries,
+            options: {
+              plugins: {
+                filler: {
+                  propagate: false,
+                },
+                title: {
+                  display: true,
+                  text: (ctx) => 'Fill: ' + ctx.chart.data.datasets[0].fill
+                }
+              },
+              interaction: {
+                intersect: false,
+              }
+            },
+          };
+          new Chart(CharLineBoundaries, config_CharLineBoundaries);
+        </script>
+      </div>
+      <!-- <div class="col-xl-6 col-md-6 col-12">
+        <div class="card text-bg-light mb-3">
           <div class="card-header">Pie</div>
           <div class="card-body">
             <canvas id="CharPie2"></canvas>
@@ -231,7 +280,7 @@
           };
           new Chart(CharPiec, configx);
         </script>
-      </div>
+      </div> -->
     </div>
 
     
